@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(this);
 
             for(ScanResult scanResult : results) {
-                arrayList.add(scanResult.SSID + " - " + scanResult.capabilities);
+                int level = WifiManager.calculateSignalLevel(scanResult.level, 100);
+                arrayList.add(scanResult.SSID + " - " + level);
                 adapter.notifyDataSetChanged();
             }
         }
